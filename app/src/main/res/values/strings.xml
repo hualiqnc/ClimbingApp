@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Climbing Score</string>
+    <string name="btn_climb">Climb</string>
+    <string name="btn_fall">Fall</string>
+    <string name="btn_reset">Reset</string>
+    <string name="current_hold">Hold hiện tại: %d</string>
+    <string name="not_started">Chưa bắt đầu</string>
+    <string name="blue_zone">Vùng Xanh (1 điểm/hold)</string>
+    <string name="green_zone">Vùng Xanh Lá (2 điểm/hold)</string>
+    <string name="red_zone">Vùng Đỏ (3 điểm/hold)</string>
+    <string name="fallen">Đã ngã!</string>
+    <string name="high_score">High Score: %d</string>
+    <string name="menu_stats">Statistics</string>
+    <string name="menu_settings">Settings</string>
+    <string name="stats_title">Thống kê leo núi</string>
+    <string name="stats_total_climbs">Tổng số lần leo: %d</string>
+    <string name="stats_total_falls">Tổng số lần ngã: %d</string>
+    <string name="stats_success_rate">Tỷ lệ thành công: %d%%</string>
+    <string name="hold_info">Hold: %1$d</string>
+    <string name="zone_info">Zone: %1$s</string>
+    <string name="zone_green">Green</string>
+    <string name="zone_yellow">Yellow</string>
+    <string name="zone_red">Red</string>
+    <string name="menu_language">Change Language</string>
+    <string name="select_language">Select Language</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Điểm Leo Núi</string>
+    
+    <!-- Button texts -->
+    <string name="btn_climb">Leo</string>
+    <string name="btn_fall">Ngã</string>
+    <string name="btn_reset">Bắt Đầu Lại</string>
+    
+    <!-- Menu items -->
+    <string name="menu_stats">Thống Kê</string>
+    <string name="menu_settings">Cài Đặt</string>
+    <string name="menu_language">Đổi Ngôn Ngữ</string>
+    
+    <!-- Hold info -->
+    <string name="hold_info">Điểm bám: %1$d</string>
+    <string name="zone_info">Vùng: %1$s</string>
+    <string name="high_score">Điểm cao nhất: %1$d</string>
+    
+    <!-- Zone names -->
+    <string name="zone_green">Xanh lá</string>
+    <string name="zone_yellow">Vàng</string>
+    <string name="zone_red">Đỏ</string>
+    
+    <!-- New strings -->
+    <string name="select_language">Chọn Ngôn Ngữ</string>
+</resources> 
