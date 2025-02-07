@@ -17,11 +17,11 @@
     <string name="stats_total_climbs">Total Climbs: %d</string>
     <string name="stats_total_falls">Total Falls: %d</string>
     <string name="stats_success_rate">Success Rate: %d%%</string>
-    <string name="hold_info">Hold: %1$d</string>
-    <string name="zone_info">Zone: %1$s</string>
-    <string name="zone_green">Green</string>
-    <string name="zone_yellow">Yellow</string>
-    <string name="zone_red">Red</string>
+    <string name="hold_info" translatable="false">Hold: %1$d</string>
+    <string name="zone_info" translatable="false">Zone: %1$s</string>
+    <string name="zone_green" translatable="false">Green</string>
+    <string name="zone_yellow" translatable="false">Yellow</string>
+    <string name="zone_red" translatable="false">Red</string>
     <string name="menu_language">Language</string>
     <string name="select_language">Select Language</string>
 </resources>

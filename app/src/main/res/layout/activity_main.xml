@@ -57,7 +57,7 @@
                     <com.google.android.material.progressindicator.LinearProgressIndicator
                         android:id="@+id/progressHolds"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="8dp"
                         android:layout_marginTop="16dp"
                         android:progress="0"
                         app:trackCornerRadius="4dp"
@@ -89,7 +89,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnClimb"
                 style="@style/Widget.ClimbingApp.Button"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_climb"
                 app:icon="@drawable/ic_stats"
@@ -99,7 +99,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnFall"
                 style="@style/Widget.ClimbingApp.Button"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/zone_red"
                 android:text="@string/btn_fall"
@@ -109,7 +109,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReset"
                 style="@style/Widget.ClimbingApp.Button.Outlined"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_reset"
                 app:icon="@drawable/ic_reset"
