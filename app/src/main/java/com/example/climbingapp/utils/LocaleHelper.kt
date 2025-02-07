@@ -1,3 +1,10 @@
+package com.example.climbingapp.utils
+
+import android.content.Context
+import android.content.res.Configuration
+import androidx.preference.PreferenceManager
+import java.util.Locale
+
 class LocaleHelper(private val context: Context) {
     companion object {
         const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"

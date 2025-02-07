@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Điểm Leo Núi</string>
+    <string name="app_name">ClimbingApp</string>
     
-    <!-- Button texts -->
+    <!-- Zone names -->
+    <string name="blue_zone">Vùng Xanh</string>
+    <string name="green_zone">Vùng Xanh Lá</string>
+    <string name="red_zone">Vùng Đỏ</string>
+    
+    <!-- Button labels -->
     <string name="btn_climb">Leo</string>
     <string name="btn_fall">Ngã</string>
-    <string name="btn_reset">Bắt Đầu Lại</string>
+    <string name="btn_reset">Đặt Lại</string>
+    
+    <!-- Status messages -->
+    <string name="current_hold">Hold Hiện Tại: %d</string>
+    <string name="not_started">Chưa Bắt Đầu</string>
+    <string name="fallen">Đã Ngã</string>
+    <string name="high_score">Điểm Cao: %d</string>
     
     <!-- Menu items -->
     <string name="menu_stats">Thống Kê</string>
     <string name="menu_settings">Cài Đặt</string>
-    <string name="menu_language">Đổi Ngôn Ngữ</string>
-    
-    <!-- Hold info -->
-    <string name="hold_info">Điểm bám: %1$d</string>
-    <string name="zone_info">Vùng: %1$s</string>
-    <string name="high_score">Điểm cao nhất: %1$d</string>
-    
-    <!-- Zone names -->
-    <string name="zone_green">Xanh lá</string>
-    <string name="zone_yellow">Vàng</string>
-    <string name="zone_red">Đỏ</string>
-    
-    <!-- New strings -->
+    <string name="menu_language">Ngôn Ngữ</string>
     <string name="select_language">Chọn Ngôn Ngữ</string>
+    
+    <!-- Stats -->
+    <string name="stats_title">Thống Kê</string>
+    <string name="stats_total_climbs">Tổng Số Lần Leo: %d</string>
+    <string name="stats_total_falls">Tổng Số Lần Ngã: %d</string>
+    <string name="stats_success_rate">Tỷ Lệ Thành Công: %d%%</string>
 </resources> 

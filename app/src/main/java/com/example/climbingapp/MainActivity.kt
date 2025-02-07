@@ -18,6 +18,10 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
+import com.example.climbingapp.utils.LocaleHelper
 
 class MainActivity : AppCompatActivity() {
     private var currentScore = 0
@@ -48,8 +52,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressHolds: LinearProgressIndicator
     private lateinit var fabStats: ExtendedFloatingActionButton
 
+    override fun attachBaseContext(newBase: Context) {
+        val localeHelper = LocaleHelper(newBase)
+        val language = localeHelper.getLanguage()
+        super.attachBaseContext(localeHelper.setLocale(language))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Khởi tạo LocaleHelper và áp dụng ngôn ngữ đã lưu
+        val localeHelper = LocaleHelper(this)
+        val savedLanguage = localeHelper.getLanguage()
+        localeHelper.setLocale(savedLanguage)
+        
         setContentView(R.layout.activity_main)
 
         // Khởi tạo views ngay sau setContentView
@@ -120,18 +136,18 @@ class MainActivity : AppCompatActivity() {
             if (!hasFallen) {
                 currentHold++
                 updateScore()
-                // soundPool.play(soundClimb, 1f, 1f, 1, 0, 1f)
+                soundPool.play(soundClimb, 1f, 1f, 1, 0, 1f)
                 animateScore()
                 Log.d(TAG, "Đã leo lên hold $currentHold")
             }
         }
 
         findViewById<MaterialButton>(R.id.btnFall).setOnClickListener {
-            if (!hasFallen) {
+            if (!hasFallen && currentHold >= BLUE_ZONE_START) {
                 hasFallen = true
                 currentScore = maxOf(0, currentScore - FALL_PENALTY)
                 updateScoreDisplay()
-                // soundPool.play(soundFall, 1f, 1f, 1, 0, 1f)
+                soundPool.play(soundFall, 1f, 1f, 1, 0, 1f)
                 updateHoldInfo()
                 Log.d(TAG, "Đã ngã ở hold $currentHold")
             }
@@ -139,15 +155,18 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<MaterialButton>(R.id.btnReset).setOnClickListener {
             resetGame()
-            // soundPool.play(soundReset, 1f, 1f, 1, 0, 1f)
+            soundPool.play(soundReset, 1f, 1f, 1, 0, 1f)
             Log.d(TAG, "Game đã reset")
         }
 
-        // Xóa phần khởi tạo views ở đây vì đã khởi tạo ở onCreate
         updateHoldInfo()
     }
 
     private fun updateScore() {
+        if (currentHold == RED_ZONE_END) {
+            hasFallen = true
+        }
+        
         val points = when (currentHold) {
             in BLUE_ZONE_START..BLUE_ZONE_END -> 1
             in GREEN_ZONE_START..GREEN_ZONE_END -> 2
@@ -164,12 +183,12 @@ class MainActivity : AppCompatActivity() {
         val scoreText = findViewById<TextView>(R.id.tvScore)
         scoreText.text = currentScore.toString()
 
-        // Cập nhật màu dựa theo vùng
+        // Cập nhật màu dựa theo vùng hiện tại
         val color = when (currentHold) {
-            in BLUE_ZONE_START..BLUE_ZONE_END -> Color.BLUE
-            in GREEN_ZONE_START..GREEN_ZONE_END -> Color.GREEN
-            in RED_ZONE_START..RED_ZONE_END -> Color.RED
-            else -> Color.BLACK
+            in BLUE_ZONE_START..BLUE_ZONE_END -> getColor(R.color.zone_blue)
+            in GREEN_ZONE_START..GREEN_ZONE_END -> getColor(R.color.zone_green)
+            in RED_ZONE_START..RED_ZONE_END -> getColor(R.color.zone_red)
+            else -> getColor(R.color.text_primary)
         }
         scoreText.setTextColor(color)
     }
@@ -244,5 +263,44 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         soundPool.release()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_language -> {
+                showLanguageDialog()
+                true
+            }
+            R.id.action_settings -> {
+                // Xử lý khi nhấn settings
+                true
+            }
+            R.id.action_stats -> {
+                showStats()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showLanguageDialog() {
+        val languages = arrayOf("English", "Tiếng Việt") 
+        val currentLanguage = LocaleHelper(this).getLanguage()
+        val currentSelection = if (currentLanguage == "vi") 1 else 0
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.select_language))
+            .setSingleChoiceItems(languages, currentSelection) { dialog, which ->
+                val newLanguage = if (which == 0) "en" else "vi"
+                LocaleHelper(this).setLocale(newLanguage)
+                recreate()
+                dialog.dismiss()
+            }
+            .show()
     }
 }
