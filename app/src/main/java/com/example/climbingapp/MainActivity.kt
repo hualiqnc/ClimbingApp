@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         fabStats = findViewById(R.id.fabStats)
 
         setupToolbar()
-        //setupSounds()
+        setupSounds()
         loadHighScore()
 
         // Khôi phục trạng thái nếu có
@@ -97,16 +97,16 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
     }
 
-    //private fun setupSounds() {
-        //soundPool = SoundPool.Builder()
-            //.setMaxStreams(3)
-            //.build()
+    private fun setupSounds() {
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(3)
+            .build()
 
-        //soundClimb = soundPool.load(this, R.raw.climb, 1)
-        //soundFall = soundPool.load(this, R.raw.fall, 1)
-        //soundSuccess = soundPool.load(this, R.raw.success, 1)
-        //soundReset = soundPool.load(this, R.raw.reset, 1)
-    //}
+        soundClimb = soundPool.load(this, R.raw.climb, 1)
+        soundFall = soundPool.load(this, R.raw.fall, 1)
+        soundSuccess = soundPool.load(this, R.raw.success, 1)
+        soundReset = soundPool.load(this, R.raw.reset, 1)
+    }
 
     private fun loadHighScore() {
         val prefs = getPreferences(Context.MODE_PRIVATE)
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         getPreferences(Context.MODE_PRIVATE).edit {
             putInt("high_score", highScore)
         }
-        // soundPool.play(soundSuccess, 1f, 1f, 1, 0, 1f)
+        soundPool.play(soundSuccess, 1f, 1f, 1, 0, 1f)
         Log.d(TAG, "Đã lưu điểm cao mới: $highScore")
     }
 
